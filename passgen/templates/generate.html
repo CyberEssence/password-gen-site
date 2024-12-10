@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="mb-4">Главная страница</h1>
+  
+  <div class="card">
+    <div class="card-header">
+      <h3>Парольный генератор</h3>
+    </div>
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="length" class="form-label">Длина пароля:</label>
+          <input type="number" class="form-control" id="length" name="length" min="8" max="64" required>
+        </div>
+        
+        <div class="mb-3">
+          <label for="use_uppercase" class="form-label">Включить заглавные буквы:</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="use_uppercase" name="use_uppercase">
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="use_numbers" class="form-label">Включить цифры:</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="use_numbers" name="use_numbers">
+          </div>
+        </div>
+        <form method="post">
+        	{% csrf_token %}
+        	{{ form.as_p }}        
+        <button type="submit" class="btn btn-primary">Сгенерировать пароль</button>
+      </form>
+      
+      {% if password %}
+        <div class="alert alert-success mt-3">
+          Сгенерированный пароль: {{ password }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  <a class="btn btn-secondary mt-4">О нас</a>
+</div>
+{% endblock %}
