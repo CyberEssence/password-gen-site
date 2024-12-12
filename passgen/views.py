@@ -47,3 +47,4 @@ def password_detail_view(request, password_id):
         return redirect('home')
 
     return render(request, 'password_detail.html', {'generated_password': generated_password})
+
