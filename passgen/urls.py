@@ -17,9 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
-
+from .views import chat_box
 urlpatterns = [
     path('index/', views.index, name="main page"),
     path('generate/', views.password_generator_view, name='password generator'),
     path('generate/<str:password_id>/', views.password_detail_view, name='password_detail'),
+    path("chat/<str:chat_box_name>/", chat_box, name="chat"),
 ]

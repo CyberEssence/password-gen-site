@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap5',
+    'channels'
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,13 @@ TEMPLATE_DIRS = (
     os.path.join(SETTINGS_PATH, 'templates'),
 )
 WSGI_APPLICATION = 'passgen.wsgi.application'
+
+ASGI_APPLICATION = "routing.application" 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': "channels.layers.InMemoryChannelLayer"
+        }
+    }
 
 
 # Database
